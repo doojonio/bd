@@ -1,0 +1,3842 @@
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<title>Лабораторная работа 1</title>
+
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+h1
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+h2
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+h3
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.Normal, li.Normal, div.Normal
+	{margin-top:5.0pt;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	layout-grid-mode:line;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 49.55pt 72.0pt 90.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU link=blue vlink=purple>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>ЛАБОРАТОРНАЯ РАБОТА 1.</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Теоретико- множественные операции реляционной алгебры.</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Основная
+идея реляционной алгебры состоит в том, что коль скоро отношения являются
+множествами, то средства манипулирования отношениями могут базироваться на
+традиционных теоретико-множественных операциях, дополненных некоторыми
+специальными операциями, специфичными для баз данных. </span></p>
+
+<p class=MsoBodyText>          Существует много подходов к определению
+реляционной алгебры, которые различаются набором операций и способами их
+интерпретации, но в принципе, более или менее равносильны. Мы опишем немного
+расширенный начальный вариант алгебры, который был предложен Э.Ф.Коддом. В этом
+варианте набор основных алгебраических операций состоит из восьми операций,
+которые делятся на два класса - теоретико-множественные операции и специальные
+реляционные операции. В состав теоретико-множественных операций входят
+операции: </p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          -&nbsp;объединения
+отношений; </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          -&nbsp;пересечения
+отношений; </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          -&nbsp;взятия
+разности отношений; </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          -&nbsp;расширенное
+декартово произведения отношений.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Первые
+три операции являются бинарными (в операции участвуют два отношения –
+операнда). Кроме того, эти операции могут производиться только над отношениями
+с  эквивалентными схемами.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Введем
+следующие обозначения:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><b><span
+lang=EN-US style='font-size:14.0pt'>R<sub>i</sub></span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><span style='font-size:14.0pt'>–
+отношение </span><span lang=EN-US style='font-size:14.0pt'>i</span><span
+style='font-size:14.0pt'>. </span><b><span lang=EN-US style='font-size:14.0pt'>R<sub>i</sub></span></b><b><span
+style='font-size:14.0pt'> ={</span></b><b><span lang=EN-US style='font-size:
+14.0pt'>r<sub>i</sub></span></b><b><span style='font-size:14.0pt'>}</span></b><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><b><span
+lang=EN-US style='font-size:14.0pt'>r<sub>i</sub></span></b><span
+style='font-size:14.0pt'> – кортежи отношения </span><span lang=EN-US
+style='font-size:14.0pt'>i</span><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><b><span
+lang=EN-US style='font-size:14.0pt'>R<sub>i</sub></span></b><span
+style='font-size:14.0pt'> = (атрибут 1, атрибут 2, … , атрибут </span><span
+lang=EN-US style='font-size:14.0pt'>N</span><span style='font-size:14.0pt'>) – схема
+отношения </span><span lang=EN-US style='font-size:14.0pt'>i</span><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          <b>Объединение</b>
+двух отношений дает новое отношение, которое содержит кортежи принадлежащие
+либо к первому, либо ко второму отношению.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'> = </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Egrave;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:14.0pt'>2</span></sub></b><b><span
+style='font-size:14.0pt'> = {</span></b><b><span lang=EN-US style='font-size:
+14.0pt'>r</span></b><b><span style='font-size:14.0pt'> | </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>r</span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt;
+font-family:Symbol'>&Icirc;</span></b><b><span lang=EN-US style='font-size:
+14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span
+style='font-size:14.0pt'>1 </span></sub></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Uacute;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>r</span></b><b><span lang=EN-US style='font-size:14.0pt'>
+</span></b><b><span lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:14.0pt'>2</span></sub></b><b><span
+style='font-size:14.0pt'>}</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Здесь
+</span><span lang=EN-US style='font-size:14.0pt'>r</span><span
+style='font-size:14.0pt'>  кортежи нового отношения.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Пример.
+Даны два отношения:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=241 colspan=2 valign=top style='width:180.9pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=241 colspan=2 valign=top style='width:180.9pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Имя</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Год
+  рожден.</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Имя</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Год
+  рожден.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Иванов</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1983</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Петров</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1985</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Сидоров</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1981</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Сидоров</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1981</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Карцев</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1979</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Лужин</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1986</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Результатом операции
+соединения будет новое отношение:</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=243 colspan=2 valign=top style='width:182.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1><b>R</b></h1>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Имя</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Год рожден.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Иванов</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>1983</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Сидоров</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>1981</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Карцев</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>1979</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Петров</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>1985</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Лужин</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>1986</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          <b>Внимание.</b>
+Кортеж &lt;Сидоров, 1981&gt; может присутствовать в отношении только в
+единственном числе («отсутствие кортежей дубликатов»).</span></p>
+
+<p class=MsoBodyText>          <b>Пересечением</b> отношений называется
+отношение, которое содержит множество кортежей, принадлежащих одновременно к
+первому и второму отношениям.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'> = </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Ccedil;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:14.0pt'>2</span></sub></b><b><span
+style='font-size:14.0pt'> = {</span></b><b><span lang=EN-US style='font-size:
+14.0pt'>r</span></b><b><span style='font-size:14.0pt'> | </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>r</span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt;
+font-family:Symbol'>&Icirc;</span></b><b><span lang=EN-US style='font-size:
+14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span
+style='font-size:14.0pt'>1 </span></sub></b><b><span style='font-size:14.0pt'> </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Ugrave;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>r</span></b><b><span lang=EN-US style='font-size:14.0pt'>
+</span></b><b><span lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:14.0pt'>2</span></sub></b><b><span
+style='font-size:14.0pt'>}</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Для
+отношений предыдущего примера операция пересечения даст отношение содержащее
+один кортеж.</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=243 colspan=2 valign=top style='width:182.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1><b>R</b></h1>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Имя</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Год рожден.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Сидоров</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>1981</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoBodyText>          <b>Разностью </b>отношений <b><span lang=EN-US>R</span><sub>1</sub>
+</b>и<b> </b><b><span lang=EN-US>R</span><sub>2</sub> </b>называется отношение,
+содержащее кортежи, принадлежащие отношению <b><span lang=EN-US>R<sub>1 </sub></span></b>и
+не принадлежащие отношению <b><span lang=EN-US>R<sub>2</sub></span></b>.</p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'> = </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> \ </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>2</span></sub></b><b><span style='font-size:14.0pt'> = {</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>r</span></b><b><span style='font-size:14.0pt'>
+| </span></b><b><span lang=EN-US style='font-size:14.0pt'>r</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:14.0pt'>1 </span></sub></b><b><span
+style='font-size:14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt;
+font-family:Symbol'>&Ugrave;</span></b><b><span lang=EN-US style='font-size:
+14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt'>r</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Iuml;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:14.0pt'>2</span></sub></b><b><span
+style='font-size:14.0pt'>}</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Для
+отношений предыдущего примера разностью </span><b><span lang=EN-US
+style='font-size:14.0pt'>R<sub>1</sub> \ R<sub>2</sub> </span></b><span
+style='font-size:14.0pt'>будет отношение.</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=243 colspan=2 valign=top style='width:182.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1><b>R</b></h1>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Имя</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Год рожден.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Иванов</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>1983</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=130 valign=top style='width:97.55pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Карцев</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>1979</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText>          <b>Расширенным декартовым произведением</b>
+отношения <b><span lang=EN-US>R</span><sub>1</sub></b> со схемой </p>
+
+<p class=MsoBodyText align=center style='text-align:center'><b><span
+lang=EN-US>R</span><sub>1</sub> = {</b><b><span lang=EN-US>A</span><sub>1</sub>
+</b><b><span lang=EN-US>A</span><sub>2</sub> </b><b><span lang=EN-US>A</span><sub>3</sub>
+, … ,</b><b><span lang=EN-US>A<sub>n</sub></span>}</b></p>
+
+<p class=MsoBodyText>и отношения <b><span lang=EN-US>R</span><sub>2  </sub></b>со
+схемой</p>
+
+<p class=MsoBodyText align=center style='text-align:center'><b><span
+lang=EN-US>R</span><sub>2</sub> = {</b><b><span lang=EN-US>B</span><sub>1</sub>
+</b><b><span lang=EN-US>B</span><sub>2</sub> </b><b><span lang=EN-US>B</span><sub>3</sub>
+, … ,</b><b><span lang=EN-US>B<sub>m</sub></span>}</b></p>
+
+<p class=MsoBodyText>называется отношение <span lang=EN-US>R</span> степени <span
+lang=EN-US>n</span>+<span lang=EN-US>m</span><span lang=EN-US> </span>со схемой
+</p>
+
+<p class=MsoBodyText align=center style='text-align:center'><b><span
+lang=EN-US>R = R<sub>1</sub> </span></b><b><span lang=EN-US style='font-family:
+Symbol'>&Auml;</span></b><b><span lang=EN-US> R<sub>2</sub> = {A<sub>1</sub> A<sub>2</sub>
+A<sub>3</sub> , … ,A<sub>n</sub>, B<sub>1</sub> B<sub>2</sub> B<sub>3</sub> , …
+,B<sub>m</sub>},</span></b></p>
+
+<p class=MsoBodyText>содержащее кортежи, полученные сцеплением каждого кортежа
+отношения <b><span lang=EN-US>R</span><sub>1  </sub></b>с каждым кортежем
+отношения <b><span lang=EN-US>R</span><sub>2</sub></b>.</p>
+
+<p class=MsoBodyText>          Пример. Даны два отношения.</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=241 colspan=3 valign=top style='width:180.9pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=241 colspan=2 valign=top style='width:180.9pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Имя</span></p>
+  </td>
+  <td width=121 colspan=2 valign=top style='width:90.45pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Год
+  рожден.</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Должность</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Оклад</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Иванов</span></p>
+  </td>
+  <td width=121 colspan=2 valign=top style='width:90.45pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1971</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Рабочий</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3000.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Сидоров</span></p>
+  </td>
+  <td width=121 colspan=2 valign=top style='width:90.45pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1979</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Инженер</span></p>
+  </td>
+  <td width=121 valign=top style='width:90.45pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>4500.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=121 valign=top style='width:90.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Карцев</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1980</span></p>
+  </td>
+  <td width=128 colspan=2 valign=top style='width:95.85pt;border:none;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+  <td style='border:none;padding:0cm 0cm 0cm 0cm' width=241 colspan=2><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr height=0>
+  <td width=121 style='border:none'></td>
+  <td width=113 style='border:none'></td>
+  <td width=7 style='border:none'></td>
+  <td width=121 style='border:none'></td>
+  <td width=121 style='border:none'></td>
+  <td width=121 style='border:none'></td>
+ </tr>
+</table>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText>Расширенным декартовым произведением этих отношений будет
+отношение:</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=4 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText><b><span lang=EN-US>R</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=113 valign=top style='width:3.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Имя</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Год рожден.</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Должность</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Оклад</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=113 valign=top style='width:3.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Иванов</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>1971</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Рабочий</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>3000.00</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=113 valign=top style='width:3.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Иванов</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>1971</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Инженер</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>4500.00</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=113 valign=top style='width:3.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Сидоров</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>1979</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Рабочий</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>3000.00</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=113 valign=top style='width:3.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Сидоров</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>1979</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Инженер</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>4500.00</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=113 valign=top style='width:3.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Карцев</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>1980</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Рабочий</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>3000.00</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=113 valign=top style='width:3.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Карцев</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>1980</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>Инженер</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText>4500.00</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Порядок выполнения
+работы.</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText>          1.&nbsp;Используя язык программирования
+составить программы выполнения теоретико – множественных операций (объединение,
+пересечение, разность), при этом исходные отношения должны размещаться во
+внешних файлах Вашего каталога и содержать первой строкой атрибуты
+соответствующих доменов. После завершения операций необходимо произвести
+проверку на наличие в результирующем отношении кортежей – дубликатов и их
+удаление.</p>
+
+<p class=MsoBodyText>          2.&nbsp;Проверить правильность выполнения этих
+операций на приведенных выше примерах.</p>
+
+<p class=MsoBodyText>          3.&nbsp;Модернизировать программы таким образом,
+чтобы задача решалась для Вашего варианта индивидуального задания.</p>
+
+<p class=MsoBodyText><span lang=EN-US>          4.&nbsp;</span>Дать
+семантическую характеристику операций на примере Ваших отношений.</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 1.</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'><b><span lang=EN-US>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Тип_самолета</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Колич_двигат.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Назначение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>ТУ-154</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>3</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Пассажирский</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>ИЛ-86</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>4</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Пассажирский</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>ИЛ-76</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>4</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Грузовой</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>ЯК-40</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>3</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Пассажирский</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>АН-12</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>4</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Грузовой</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'><b><span lang=EN-US>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Тип_самолета</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Колич_двигат.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Назначение</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>ТУ-134</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>2</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Пассажирский</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>АН-24</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>2</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Пассажирский</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>ИЛ-76</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>4</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Грузовой</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>ЯК-42</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>3</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Пассажирский</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>АН-2</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>1</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Пассажирский</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 2.</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'><b><span lang=EN-US>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Название_мест-я</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Тип_месторож.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Металл</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Таштагольское</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Скарново-магн.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Железо</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Гайское</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Колчеданное</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Медь</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Песчаное</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Скарново-магн.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Железо</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Дегтярское</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Колчеданное</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Медь</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Качканарское</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Магматическое</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Железо</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'><b><span lang=EN-US>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Название_мест-я</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Тип_месторож.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Металл</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Шерегеш</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Скарново-магн.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Железо</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Сибай</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Колчеданное</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Медь</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Песчаное</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Скарново-магн.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Железо</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Дегтярское</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Колчеданное</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Медь</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Майское</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Россыпное</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Золото</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 3.</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'><b><span lang=EN-US>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Шифр_детали</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Название</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11073</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Гайка_М6</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 1</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11076</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Гайка_М8</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 1</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11077</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Гайка_М10</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 1</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11079</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Болт_М6</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 2</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11080</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Болт_М8</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 2</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'><b><span lang=EN-US>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Шифр_детали</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Название</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11071</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Шайба_М6</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 1</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11072</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Шайба_М8</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 1</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11079</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Болт_М6</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 2</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>11080</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Болт_М8</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Цех 2</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 4.</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'><b><span lang=EN-US>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Фамилия</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Дисциплина</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Оценка</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Иванов</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Архитектура ЭВМ</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>5</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Сергеев</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Архитектура ЭВМ</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>3</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Казанцев</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Управление данными</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>3</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Горбачев</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Управление данными</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>4</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Егоров</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Информатика </p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>3</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'><b><span lang=EN-US>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Фамилия</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Дисциплина</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Оценка</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Иванов</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Архитектура ЭВМ</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>5</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:solid windowtext 1.0pt;
+  border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Казанцев</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Управление данными</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>3</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Петров</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Управление данными</p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>5</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Сидоров</p>
+  </td>
+  <td width=216 valign=top style='width:162.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>Математика </p>
+  </td>
+  <td width=86 valign=top style='width:64.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoBodyText align=left style='text-align:left'>4</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 5.</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>Тип</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h3>Дальность</h3>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>Кол_пасс.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>ЯК-42</h1>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>1850</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>100</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>ИЛ-86</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>4800</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>360</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Б-707</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>8690</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>150</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>ТУ-1</span><span
+  lang=EN-US style='font-size:14.0pt'>5</span><span style='font-size:14.0pt'>4</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>4500</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>150</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>ТУ-</span><span lang=EN-US
+  style='font-size:14.0pt'>204</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>37</span><span style='font-size:14.0pt'>00</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>1</span><span lang=EN-US style='font-size:14.0pt'>9</span><span
+  style='font-size:14.0pt'>0</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>ИЛ-62</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>9000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>170</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>Тип</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h3>Дальность</h3>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>Кол_пасс.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>АН-24</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>2000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>50</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>ЯК-40</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>1</span><span lang=EN-US style='font-size:14.0pt'>3</span><span
+  style='font-size:14.0pt'>00</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>32</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>ЯК-42</h1>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>1850</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>100</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>ИЛ-86</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>4800</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>360</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>ТУ-1</span><span
+  lang=EN-US style='font-size:14.0pt'>5</span><span style='font-size:14.0pt'>4</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>4500</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>150</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>ИЛ-62</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>9000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>170</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 6.</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid;height:4.0pt'>
+  <td width=605 colspan=4 valign=top style='width:16.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <h2><span lang=EN-US style='font-size:14.0pt'>Тип</span></h2>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Кол_пассаж.</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Скорость</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Расход_топл.</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>ПАЗ-3205</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>25</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>90</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>20.5</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>ЛАЗ-695Н</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>34</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>70</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>26.0</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>ЗИЛ-325010</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>22</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>95</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>21.0</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>МАПЗ-52661</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>29</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>90</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>27.0</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>МАЗ-151</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>49</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>130</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>30.0</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid;height:4.0pt'>
+  <td width=605 colspan=4 valign=top style='width:16.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <h2><span lang=EN-US style='font-size:14.0pt'>Тип</span></h2>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Кол_пассаж.</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Скорость</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Расход_топл.</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>ПАЗ-3205</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>25</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>90</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>20.5</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>ЛАЗ-695Н</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>34</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>70</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>26.0</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>МАПЗ-52661</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>29</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>90</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>27.0</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>МАЗ-151</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>49</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>130</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>30.0</span></p>
+  </td>
+ </tr>
+ <tr style='height:4.0pt'>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>“Газель”</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>11</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>100</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:4.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>16.0</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 7</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid;height:16.0pt'>
+  <td width=605 colspan=4 valign=top style='width:16.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+  <td style='height:16.0pt;border:none' width=0 height=21></td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:16.1pt'>
+  <td width=151 rowspan=2 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:16.1pt'>
+  <h2><span style='font-size:14.0pt'>Тип</span></h2>
+  </td>
+  <td width=151 rowspan=2 valign=top style='width:4.0cm;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Грузо_подъем.</span></p>
+  </td>
+  <td width=151 rowspan=2 valign=top style='width:4.0cm;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Скорость</span></p>
+  </td>
+  <td width=151 rowspan=2 valign=top style='width:4.0cm;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.1pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Расход_топлив</span></p>
+  </td>
+  <td style='height:16.1pt;border:none' width=0 height=21></td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:16.1pt'>
+  <td style='height:16.1pt;border:none' width=0 height=21></td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1><span lang=EN-US>ЗИЛ-433360</span></h1>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>6000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>90</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>25.8</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>ЗИЛ-133Г40</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>10000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>85</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>23.7</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>ЗИЛ-5301А0</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>95</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>12.0</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>ГАЗ-3307</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>4500</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>90</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>19.6</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>МАЗ-53363</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>7700</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>100</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>21.8</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+</table>
+
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid;height:16.0pt'>
+  <td width=605 colspan=4 valign=top style='width:16.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:16.0pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>2</sub></span></b></p>
+  </td>
+  <td style='height:16.0pt;border:none' width=0 height=21></td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:14.0pt'>
+  <td width=151 rowspan=2 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:14.0pt'>
+  <h2><span style='font-size:14.0pt'>Тип</span></h2>
+  </td>
+  <td width=151 rowspan=2 valign=top style='width:4.0cm;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:14.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Грузо_подъем.</span></p>
+  </td>
+  <td width=151 rowspan=2 valign=top style='width:4.0cm;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:14.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Скорость</span></p>
+  </td>
+  <td width=151 rowspan=2 valign=top style='width:4.0cm;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:14.0pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Расход_топлив</span></p>
+  </td>
+  <td style='height:14.0pt;border:none' width=0 height=19></td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:16.1pt'>
+  <td style='height:16.1pt;border:none' width=0 height=21></td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h2 align=left style='text-align:left'><span lang=EN-US style='font-size:
+  14.0pt'>ЗИЛ-433110</span></h2>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>6000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>95</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>17,5</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>ЗИЛ-5343300</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>8000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>96</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>23,0</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>ЗИЛ-133Г40</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>10000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>85</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>23,7</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>ЗИЛ-5301А0</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>95</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>12,</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>ГАЗ-3307</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>4500</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>90</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>19,6</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>МАЗ-6317</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>11000</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>85</span></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>45,0</span></p>
+  </td>
+  <td style='border:none' width=0><p class='MsoNormal'>&nbsp;</td>
+ </tr>
+</table>
+</div>
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 8</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=493 colspan=4 valign=top style='width:369.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Район</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Кол_ комн.</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h2><span lang=EN-US style='font-size:14.0pt'>Площадь</span></h2>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Этаж</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Центр</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>15</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Центр</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>2</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>27</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Центр</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>40</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Уралмаш</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>15</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Уралмаш</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>2</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>27</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Эльмаш</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>15</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Эльмаш</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>45</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Юго-западный</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>2</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>29</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Юго-западный</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>40</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText align=center style='text-align:center'>.</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=493 colspan=4 valign=top style='width:369.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Район</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Кол_ комн.</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h2><span lang=EN-US style='font-size:14.0pt'>Площадь</span></h2>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Этаж</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Центр</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>15</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Центр</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>2</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>27</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Центр</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>40</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Уралмаш</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>40</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>2</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Химмаш</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>2</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>30</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Эльмаш</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>45</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Юго-западный</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>2</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>29</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Юго-западный</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>40</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 9</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=493 colspan=4 valign=top style='width:369.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Процессор</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Частота</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h2><span lang=EN-US style='font-size:14.0pt'>RAM</span></h2>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>HDD</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Pentium-2</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>650</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>64</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>8</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Pentium-3</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>850</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>128</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>20</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Athlon</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1200</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>128</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>40</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Celeron</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>650</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>64</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>10</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Celeron</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>850</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>128</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>20</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Duron</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>850</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>64</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>10</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=493 colspan=4 valign=top style='width:369.6pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Процессор</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>Частота</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h2><span lang=EN-US style='font-size:14.0pt'>RAM</span></h2>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>HDD</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Pentium-2</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>650</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>64</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>8</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Pentium-4</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1450</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>256</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>40</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Athlon</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>1800</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>256</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>40</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Celeron</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>850</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>128</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>20</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=153 valign=top style='width:114.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:14.0pt'>Duron</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>850</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>64</span></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+  style='font-size:14.0pt'>10</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoBodyText><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoBodyText align=center style='text-align:center'>Задание 10</p>
+
+<p class=MsoBodyText align=center style='text-align:center'><span lang=EN-US>&nbsp;</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>Название</span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h3>Тип</h3>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>Цена</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>Сканер</h1>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>''ColorPage
+  VIVID 4 Slim''</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>2189.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Принтер</span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Canon
+  LBP 1120</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>6237.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>Принтер</h1>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>''DJ-5550''</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>4127</span><span
+  lang=EN-US style='font-size:14.0pt'>.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>процессор </span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Pentium-III</span><span
+  style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>1200MHz</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3737.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>процессор </span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Celeron </span><span style='font-size:14.0pt'>1</span><span
+  lang=EN-US style='font-size:14.0pt'>4</span><span style='font-size:14.0pt'>00MHz</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>1600</span><span style='font-size:14.0pt'>.00</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText align=center style='text-align:center'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoBodyText align=center style='text-align:center'><span lang=EN-US>&nbsp;</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span lang=EN-US style='font-size:14.0pt'>R<sub>2</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>Название</span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h3>Тип</h3>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>Цена</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Принтер</span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Canon
+  LBP 810</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>6063.75</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>Принтер</span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>EPSON
+  ''STYLUS C42SX''</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1789.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>Принтер</h1>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>''DJ-5550''</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>4127</span><span
+  lang=EN-US style='font-size:14.0pt'>.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>процессор </span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Pentium-III</span><span
+  style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>1200MHz</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3737.00</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=118 valign=top style='width:88.8pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt'>процессор </span></p>
+  </td>
+  <td width=236 valign=top style='width:177.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Celeron </span><span style='font-size:14.0pt'>1</span><span
+  lang=EN-US style='font-size:14.0pt'>4</span><span style='font-size:14.0pt'>00MHz</span></p>
+  </td>
+  <td width=99 valign=top style='width:74.25pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>1628</span><span style='font-size:14.0pt'>.00</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoBodyText align=center style='text-align:center'><span lang=EN-US>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,2027 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<title>Специальные операции реляционной алгебры</title>
+
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+h2
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	page-break-after:avoid;
+	border:none;
+	padding:0cm;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+h3
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+h4
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+h5
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 42.45pt 72.0pt 90.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=RU>
+
+<div class=Section1>
+
+<p class=MsoBodyText align=center style='text-align:center'><b>ЛАБОРАТОРНАЯ
+РАБОТА 2</b></p>
+
+<p class=MsoBodyText align=center style='text-align:center'><b>&nbsp;</b></p>
+
+<p class=MsoBodyText align=center style='text-align:center'><b>СПЕЦИАЛЬНЫЕ
+ОПЕРАЦИИ РЕЛЯЦИОННОЙ АЛГЕБРЫ</b></p>
+
+<p class=MsoBodyText align=center style='text-align:center'>&nbsp;</p>
+
+<p class=MsoBodyText style='text-align:justify'>          <b>Горизонтальный
+выбор или операция фильтрации</b>. Еще эту операцию называют операцией
+ограничения отношений.</p>
+
+<p class=MsoBodyText style='text-align:justify'>          Пусть <span
+style='font-family:Symbol'>a</span> - булевское выражение, состоящее из термов
+сравнения с помощью связок И, ИЛИ, НЕ (<span style='font-family:Symbol'>&Ugrave;</span>,
+<span style='font-family:Symbol'>&Uacute;</span>, <span style='font-family:
+Symbol'>&Oslash;</span>) и скобок.</p>
+
+<p class=MsoBodyText style='text-align:justify'>          В качестве термов
+сравнения допускаются:</p>
+
+<p class=MsoBodyText style='text-align:justify'>          а) терм <b>А ос а</b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          где
+<b>А</b> – имя атрибута, принимающего значения из домена </span><span
+lang=EN-US style='font-size:14.0pt'>D</span><span style='font-size:14.0pt'>;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          <b>а
+</b>– константа, взятая из того же домена;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          <b>ос
+</b>– одна из операций сравнения, допустимая для данного домена.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          б)
+терм <b>А ос В</b></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          где
+<b>А</b> и <b>В </b>имена некоторых </span><b><span style='font-size:14.0pt;
+font-family:Symbol'>q</span></b><span style='font-size:14.0pt'> - сравнимых
+атрибутов, т.е. атрибутов, принимающих значения из одного и того же домена.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<div style='border:double windowtext 1.5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='text-align:justify;border:none;padding:0cm'><span
+style='font-size:14.0pt'>          <b>Результатом операции фильтрации, заданной
+на отношении </b></span><b><span lang=EN-US style='font-size:14.0pt'>R</span></b><b><span
+style='font-size:14.0pt'> в виде булевского выражения </span></b><b><span
+style='font-size:14.0pt;font-family:Symbol'>a</span></b><b><span
+style='font-size:14.0pt'>, определенного на атрибутах отношения </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'>,
+называется отношение </span></b><b><span lang=EN-US style='font-size:14.0pt'>R</span></b><b><span
+style='font-size:14.0pt'>[</span></b><b><span style='font-size:14.0pt;
+font-family:Symbol'>a</span></b><b><span style='font-size:14.0pt'>], включающее
+те кортежи из исходного отношения, для которых истинно условие выбора.</span></b></p>
+
+<h2><span lang=EN-US>R[</span><span lang=EN-US style='font-family:Symbol'>a</span><span
+lang=EN-US>(r)] = {r | r </span><span lang=EN-US style='font-family:Symbol'>&Icirc;</span><span
+lang=EN-US> R </span><span lang=EN-US style='font-family:Symbol'>&Ugrave;</span><span
+lang=EN-US> </span><span lang=EN-US style='font-family:Symbol'>a</span><span
+lang=EN-US> ( r ) = “True”}</span></h2>
+
+<p class=MsoNormal style='text-align:justify;border:none;padding:0cm'><span
+style='font-size:14.0pt'>условие </span><span style='font-size:14.0pt;
+font-family:Symbol'>a</span><span style='font-size:14.0pt'> может быть сколь
+угодно сложным.</span></p>
+
+</div>
+
+<p class=MsoBodyText2>&nbsp;</p>
+
+<p class=MsoBodyText2>Пример.</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>1</sub></span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Фамилия</span></p>
+  </td>
+  <td width=197 valign=top style='width:147.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+  <td width=105 valign=top style='width:79.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Оценка</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Иванов</span></p>
+  </td>
+  <td width=197 valign=top style='width:147.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=105 valign=top style='width:79.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Отлично</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Петров</span></p>
+  </td>
+  <td width=197 valign=top style='width:147.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Архитектура
+  ЭВМ</span></p>
+  </td>
+  <td width=105 valign=top style='width:79.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Хорошо</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Сидоров</span></p>
+  </td>
+  <td width=197 valign=top style='width:147.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=105 valign=top style='width:79.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Хорошо</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Кузнецов</span></p>
+  </td>
+  <td width=197 valign=top style='width:147.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=105 valign=top style='width:79.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Отлично</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'> = </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> [Дисциплина =
+«Информатика» </span></b><b><span style='font-size:14.0pt;font-family:Symbol'>&Ugrave;</span></b><b><span
+style='font-size:14.0pt'> Оценка = «Отлично»]</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>&nbsp;</span></b></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=454 colspan=3 valign=top style='width:12.0cm;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+  style='font-size:14.0pt'>R</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Фамилия</span></p>
+  </td>
+  <td width=197 valign=top style='width:147.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+  <td width=105 valign=top style='width:79.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Оценка</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Иванов</span></p>
+  </td>
+  <td width=197 valign=top style='width:147.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=105 valign=top style='width:79.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Отлично</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=151 valign=top style='width:4.0cm;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Кузнецов</span></p>
+  </td>
+  <td width=197 valign=top style='width:147.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=105 valign=top style='width:79.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Отлично</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          <b>Операция
+проектирования. </b>Пусть </span><b><span lang=EN-US style='font-size:14.0pt'>R</span></b><span
+style='font-size:14.0pt'> отношение со схемой </span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>S<sub>R</sub></span></b><b><span style='font-size:
+14.0pt'> = (</span></b><b><span lang=EN-US style='font-size:14.0pt'>A</span></b><b><sub><span
+style='font-size:14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> ,
+</span></b><b><span lang=EN-US style='font-size:14.0pt'>A</span></b><b><sub><span
+style='font-size:14.0pt'>2</span></sub></b><b><span style='font-size:14.0pt'> ,
+</span></b><b><span lang=EN-US style='font-size:14.0pt'>A</span></b><b><sub><span
+style='font-size:14.0pt'>3</span></sub></b><b><span style='font-size:14.0pt'> ,
+… , </span></b><b><span lang=EN-US style='font-size:14.0pt'>A<sub>n</sub></span></b><b><span
+style='font-size:14.0pt'>)</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Обозначим
+через В подмножество <b>[</b></span><b><span lang=EN-US style='font-size:14.0pt'>A<sub>i</sub></span></b><b><span
+style='font-size:14.0pt'>]</span></b><span style='font-size:14.0pt'>;   </span><b><span
+lang=EN-US style='font-size:14.0pt'>B</span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt;
+font-family:Symbol'>&Iacute;</span></b><b><span style='font-size:14.0pt'> [</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>A<sub>i</sub></span></b><b><span
+style='font-size:14.0pt'>]</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>При
+этом пусть </span><span lang=EN-US style='font-size:14.0pt'>B</span><sup><span
+style='font-size:14.0pt'>1</span></sup><span style='font-size:14.0pt'> –множество
+атрибутов из [</span><span lang=EN-US style='font-size:14.0pt'>A<sub>i</sub></span><span
+style='font-size:14.0pt'>], не вошедших в </span><span lang=EN-US
+style='font-size:14.0pt'>B</span><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Если</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>B</span></b><b><span style='font-size:14.0pt'> = {</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>A<sub>i</sub></span></b><b><sup><span
+style='font-size:14.0pt'>1</span></sup></b><b><span style='font-size:14.0pt'> ,
+</span></b><b><span lang=EN-US style='font-size:14.0pt'>A<sub>i</sub></span></b><b><sup><span
+style='font-size:14.0pt'>2</span></sup></b><b><span style='font-size:14.0pt'> ,
+</span></b><b><span lang=EN-US style='font-size:14.0pt'>A<sub>i</sub></span></b><b><sup><span
+style='font-size:14.0pt'>3</span></sup></b><b><span style='font-size:14.0pt'> ,
+…, </span></b><b><span lang=EN-US style='font-size:14.0pt'>A<sub>i</sub><sup>k</sup></span></b><b><span
+style='font-size:14.0pt'> }</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>B</span></b><b><sup><span style='font-size:14.0pt'>1</span></sup></b><b><span
+style='font-size:14.0pt'> = {</span></b><b><span lang=EN-US style='font-size:
+14.0pt'>A<sub>j</sub></span></b><b><sup><span style='font-size:14.0pt'>1</span></sup></b><b><span
+style='font-size:14.0pt'> , </span></b><b><span lang=EN-US style='font-size:
+14.0pt'>A<sub>j</sub></span></b><b><sup><span style='font-size:14.0pt'>2</span></sup></b><b><span
+style='font-size:14.0pt'> , </span></b><b><span lang=EN-US style='font-size:
+14.0pt'>A<sub>j</sub></span></b><b><sup><span style='font-size:14.0pt'>3</span></sup></b><b><span
+style='font-size:14.0pt'> , …, </span></b><b><span lang=EN-US style='font-size:
+14.0pt'>A<sub>j</sub><sup>k</sup></span></b><b><span style='font-size:14.0pt'>
+}</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          и</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>r =&lt; a<sub>i</sub><sup>1</sup> , a<sub>i</sub><sup>2</sup>
+, a<sub>i</sub><sup>3</sup> , …, a<sub>i</sub><sup>k</sup> &gt;</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>a<sub>i</sub><sup>k</sup> </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> A<sub>ij</sub><sup>k</sup></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:14.0pt'>          </span><span style='font-size:14.0pt'>то</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>r[B],   S = &lt; a<sub>j</sub><sup>1</sup> , a<sub>j</sub><sup>2</sup>
+, a<sub>j</sub><sup>3</sup> , …, a<sub>j</sub><sup>m</sup> &gt;</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>a<sub>j</sub><sup>m</sup></span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>A<sub>ij</sub><sup>m</sup></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<div style='border:double windowtext 1.5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='text-align:justify;border:none;padding:0cm'><b><span
+style='font-size:14.0pt'>          Проекцией отношения </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span style='font-size:14.0pt'>на набор
+атрибутов </span></b><b><span lang=EN-US style='font-size:14.0pt'>B</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span style='font-size:14.0pt'>(</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'>[</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>B</span></b><b><span style='font-size:14.0pt'>])
+называется новое отношение со схемой, соответствующей набору атрибутов </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>B</span></b><b><span style='font-size:14.0pt'>,
+содержащему кортежи, получаемые из кортежей исходного отношения путем удаления
+из них значений, не принадлежащих атрибутам из набора </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>B</span></b><b><span style='font-size:14.0pt'>.
+Иногда эту операцию называют операцией горизонтального выбора.</span></b></p>
+
+</div>
+
+<h3><b><span lang=EN-US>R</span></b><b>[<span lang=EN-US>B</span></b><b>] = {<span
+lang=EN-US>r</span></b><b>[<span lang=EN-US>B</span></b><b>]}</b></h3>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Операция
+условного соединения является бинарной. Пусть имеем два отношения </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span lang=EN-US style='font-size:
+14.0pt'> </span><span style='font-size:14.0pt'>и </span><span lang=EN-US
+style='font-size:14.0pt'>Q</span><span style='font-size:14.0pt'>, схемы которых
+выглядят следующим образом:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>S<sub>R</sub> = (A<sub>1</sub> , A<sub>2</sub> , A<sub>3</sub>
+, … , A<sub>n</sub>)</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>S<sub>Q</sub> = (B<sub>1</sub> , B<sub>2</sub> , B<sub>3</sub>
+, … , B<sub>m</sub>)</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:14.0pt'>          </span><span style='font-size:14.0pt'>Полагая,
+что заданы наборы атрибутов </span><span lang=EN-US style='font-size:14.0pt'>A<sup>c</sup></span><span
+lang=EN-US style='font-size:14.0pt'> </span><span lang=EN-US style='font-size:
+14.0pt'>B<sup>c</sup></span><span style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>A<sup>c</sup> </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Ecirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> {A<sub>i</sub> } i=1,2,3,…n    B<sup>c</sup>
+</span></b><b><span lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Ecirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> {B<sub>j</sub> } j=1,2,3,…n</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Эти
+наборы состоят и сравнимых атрибутов.</span></p>
+
+<div style='border:double windowtext 1.5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='text-align:justify;border:none;padding:0cm'><span
+style='font-size:14.0pt'>          <b>Соединением отношений </b></span><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span style='font-size:14.0pt'>и </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>Q</span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span style='font-size:14.0pt'>при
+условии </span></b><b><span style='font-size:14.0pt;font-family:Symbol'>b</span></b><b><span
+style='font-size:14.0pt'> будет подмножество декартова произведения отношений </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span style='font-size:14.0pt'>и </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>Q</span></b><b><span style='font-size:14.0pt'>,
+кортежи которого удовлетворяют  </span></b><b><span style='font-size:14.0pt;
+font-family:Symbol'>b</span></b><b><span style='font-size:14.0pt'> как
+выполнению условий</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;border:none;padding:0cm'><b><span
+style='font-size:14.0pt'>          </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>A<sup>c</sup></span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt;
+font-family:Symbol'>q</span></b><b><sub><span lang=EN-US style='font-size:14.0pt'>i</span></sub></b><b><span
+lang=EN-US style='font-size:14.0pt'> </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>B<sup>c</sup></span></b><b><span lang=EN-US
+style='font-size:14.0pt'> </span></b><b><span lang=EN-US style='font-size:14.0pt'>i</span></b><b><span
+style='font-size:14.0pt'>=1, 2, …, </span></b><b><span lang=EN-US
+style='font-size:14.0pt'>k</span></b><b><span style='font-size:14.0pt'> – число
+атрибутов, входящих в наборы </span></b><b><span lang=EN-US style='font-size:
+  14.0pt'>A<sup>c</sup></span></b><b><span lang=EN-US style='font-size:14.0pt'>
+ </span></b><b><span lang=EN-US style='font-size:14.0pt'>B<sup>c</sup></span></b><b><span
+style='font-size:14.0pt'>.</span></b></p>
+
+<p class=MsoNormal style='text-align:justify;border:none;padding:0cm'><b><span
+style='font-size:14.0pt'>          </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>q</span></b><b><sub><span
+lang=EN-US style='font-size:14.0pt'>i</span></sub></b><b><span
+style='font-size:14.0pt'> - </span></b><b><span lang=EN-US style='font-size:
+14.0pt'>i</span></b><b><span style='font-size:14.0pt'>-й предикат сравнения,
+определяемый из множества допустимых на домене операций сравнения.</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;border:none;
+padding:0cm'><b><span lang=EN-US style='font-size:14.0pt'>R[ </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>b</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> ] Q = {(r, q) | (r, q) | r A<sup>c</sup> </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>q</span></b><b><sub><span
+lang=EN-US style='font-size:14.0pt'>i</span></sub></b><b><span lang=EN-US
+style='font-size:14.0pt'> q B<sup>c</sup> = “True” i = 1, 2, … , k}</span></b></p>
+
+</div>
+
+<p class=MsoBodyText2><span lang=EN-US>          </span>Пример.</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=432 colspan=3 valign=top style='width:324.35pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>1</sub></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Фамилия</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Оценка</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Мильчаков</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Стоянова</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Лузин</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>4</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Гулина</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:76.3pt;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=435 colspan=2 valign=top style='width:326.0pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>2</sub></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=219 valign=top style='width:164.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Преподаватель</span></p>
+  </td>
+  <td width=216 valign=top style='width:161.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=219 valign=top style='width:164.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h5><span lang=EN-US>Серков</span></h5>
+  </td>
+  <td width=216 valign=top style='width:161.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=219 valign=top style='width:164.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=216 valign=top style='width:161.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Математика</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Операция
+расширенного декартова произведения дает новое отношение из пяти атрибутов.</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=641 colspan=5 valign=top style='width:480.75pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>d</sub></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Фамилия</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Оценка</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Преподаватель</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Мильчаков</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>5</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h5><span lang=EN-US>Серков</span></h5>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Стоянова</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Серков</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Лузин</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>4</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Серков</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Гулина</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Серков</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Мильчаков</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>5</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Математика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Стоянова</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Математика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Лузин</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>4</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Математика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Гулина</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Математика</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Совершенно
+очевидно, что такое отношение не отражает реальную ситуацию, которая может
+сложиться. Сформируем операцию условного соединения следующим образом:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'> = (</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> [</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> .Дисциплина = </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>2</span></sub></b><b><span style='font-size:14.0pt'> .Дисциплина] </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>2</span></sub></b><b><span style='font-size:14.0pt'>)</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          В
+результате получим отношение:</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=641 colspan=5 valign=top style='width:480.75pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>R</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Фамилия</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Оценка</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Преподаватель</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Мильчаков</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>5</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h5><span lang=EN-US>Серков</span></h5>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Лузин</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>4</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Серков</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Стоянова</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Математика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Гулина</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=128 valign=top style='width:96.15pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Математика</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Наличие
+в результирующем отношении двух атрибутов «Дисциплина» является излишним,
+поэтому целесообразно дополнить операцию условного соединения операцией
+проекции записав все выражение следующим образом.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'> = (</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> [</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>1</span></sub></b><b><span style='font-size:14.0pt'> .Дисциплина = </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>2</span></sub></b><b><span style='font-size:14.0pt'> .Дисциплина] </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><sub><span style='font-size:
+14.0pt'>2</span></sub></b><b><span style='font-size:14.0pt'>) [Фамилия, дисциплина,
+Оценка, Преподаватель]</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Указанная
+операция приведет к формированию следующего отношения.</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=529 colspan=5 valign=top style='width:396.4pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h4><span lang=EN-US>R</span></h4>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Фамилия</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Оценка</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Преподаватель</span></p>
+  </td>
+  <td width=16 valign=top style='width:11.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Мильчаков</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>5</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h5><span lang=EN-US>Серков</span></h5>
+  </td>
+  <td width=16 valign=top style='width:11.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Лузин</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>4</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Серков</span></p>
+  </td>
+  <td width=16 valign=top style='width:11.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Стоянова</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=16 valign=top style='width:11.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=128 valign=top style='width:96.15pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Гулина</span></p>
+  </td>
+  <td width=144 valign=top style='width:107.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='font-size:14.0pt'>3</span></p>
+  </td>
+  <td width=165 valign=top style='width:124.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=16 valign=top style='width:11.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          <b>Операция
+деления</b> является последней операцией реляционной алгебры. Для определения
+операции деления рассмотрим сначала понятие множества образов.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Пусть
+<b>А </b>некоторый набор атрибутов </span><b><span lang=EN-US style='font-size:
+14.0pt'>A</span></b><b><span lang=EN-US style='font-size:14.0pt'> </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Igrave;</span></b><b><span
+style='font-size:14.0pt'> {</span></b><b><span lang=EN-US style='font-size:
+14.0pt'>A<sub>i</sub></span></b><b><span style='font-size:14.0pt'>} </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>i</span></b><b><span style='font-size:14.0pt'>=1,
+2, … ,</span></b><b><span lang=EN-US style='font-size:14.0pt'>k</span></b><b><span
+style='font-size:14.0pt'>. </span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+style='font-size:14.0pt'>A</span></b><b><sup><span style='font-size:14.0pt'>1</span></sup></b><b><span
+style='font-size:14.0pt'> – </span></b><span style='font-size:14.0pt'>набор
+атрибутов, не входящих в множество </span><span lang=EN-US style='font-size:
+14.0pt'>A</span><span style='font-size:14.0pt'>. </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Пересечение
+множеств <b>А</b> и </span><b><span lang=EN-US style='font-size:14.0pt'>A</span></b><b><sup><span
+style='font-size:14.0pt'>1 </span></sup></b><span style='font-size:14.0pt'>пусто
+(<b>А </b></span><b><span lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Ccedil;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>A</span></b><b><sup><span style='font-size:
+14.0pt'>1</span></sup></b><span style='font-size:14.0pt'>) = 0. Объединение
+множеств дает множество всех атрибутов данного отношения.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Тогда
+множеством образов элемента у проекции </span><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'>[</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>A</span></b><b><span style='font-size:14.0pt'>]</span></b><span
+style='font-size:14.0pt'> называется множество таких элементов у проекции </span><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'>
+[</span></b><b><span lang=EN-US style='font-size:14.0pt'>A</span></b><b><sup><span
+style='font-size:14.0pt'>1</span></sup></b><b><span style='font-size:14.0pt'> ]</span></b><span
+style='font-size:14.0pt'> , для которых сцепление (</span><span lang=EN-US
+style='font-size:14.0pt'>x</span><span style='font-size:14.0pt'>, </span><span
+lang=EN-US style='font-size:14.0pt'>y</span><span style='font-size:14.0pt'>) является
+кортежами отношения </span><span lang=EN-US style='font-size:14.0pt'>R</span><span
+style='font-size:14.0pt'>.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:14.0pt'>QA(x) = {y | y </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> R [A<sup>1</sup> ] </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Ugrave;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> (x, y) </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> R}</span></b></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span lang=EN-US
+style='font-size:14.0pt'>          </span><span style='font-size:14.0pt'>Пусть
+даны два отношения </span><span lang=EN-US style='font-size:14.0pt'>R</span><span
+style='font-size:14.0pt'> и </span><span lang=EN-US style='font-size:14.0pt'>T</span><span
+lang=EN-US style='font-size:14.0pt'> </span><span style='font-size:14.0pt'>соответственно
+со схемами:</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;border:none;
+padding:0cm'><b><span lang=EN-US style='font-size:14.0pt'>S<sub>R</sub> = (A<sub>1</sub>
+, A<sub>2</sub> , A<sub>3</sub> , … , A<sub>n</sub>)</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center;border:none;
+padding:0cm'><b><span lang=EN-US style='font-size:14.0pt'>S<sub>T</sub> = (B<sub>1</sub>
+, B<sub>2</sub> , B<sub>3</sub> , … , B<sub>m</sub>)</span></b></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><b><span lang=EN-US
+style='font-size:14.0pt'>A</span></b><span lang=EN-US style='font-size:14.0pt'>
+</span><span style='font-size:14.0pt'>и </span><b><span lang=EN-US
+style='font-size:14.0pt'>B</span></b><span lang=EN-US style='font-size:14.0pt'>
+</span><span style='font-size:14.0pt'>– наборы атрибутов этих отношений
+одинакового размера. Проекции </span><b><span lang=EN-US style='font-size:14.0pt'>R</span></b><b><span
+style='font-size:14.0pt'>[</span></b><b><span lang=EN-US style='font-size:14.0pt'>A</span></b><b><span
+style='font-size:14.0pt'>]</span></b><span style='font-size:14.0pt'> и </span><b><span
+lang=EN-US style='font-size:14.0pt'>T</span></b><b><span style='font-size:14.0pt'>[</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>B</span></b><b><span style='font-size:14.0pt'>]</span></b><span
+style='font-size:14.0pt'> совместимы по объединению, то есть имеют
+эквивалентные схемы.</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span style='font-size:14.0pt'>          Операция
+деления ставит в соответствие отношениям </span><b><span lang=EN-US
+style='font-size:14.0pt'>R</span></b><span lang=EN-US style='font-size:14.0pt'>
+</span><span style='font-size:14.0pt'>и </span><b><span lang=EN-US
+style='font-size:14.0pt'>T</span></b><b><span lang=EN-US style='font-size:14.0pt'>
+</span></b><span style='font-size:14.0pt'>отношение </span><b><span lang=EN-US
+style='font-size:14.0pt'>Q</span></b><b><span style='font-size:14.0pt'> = </span></b><b><span
+lang=EN-US style='font-size:14.0pt'>R</span></b><b><span style='font-size:14.0pt'>[</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>A</span></b><b><span style='font-size:14.0pt'>
+: </span></b><b><span lang=EN-US style='font-size:14.0pt'>B</span></b><b><span
+style='font-size:14.0pt'>] </span></b><b><span lang=EN-US style='font-size:
+14.0pt'>T</span></b><span style='font-size:14.0pt'>, кортежи которого являются
+теми элементами проекции </span><b><span lang=EN-US style='font-size:14.0pt'>R</span></b><b><span
+style='font-size:14.0pt'>[</span></b><b><span lang=EN-US style='font-size:14.0pt'>A</span></b><b><sup><span
+style='font-size:14.0pt'>1</span></sup></b><b><span style='font-size:14.0pt'>],
+</span></b><span style='font-size:14.0pt'>для которых </span><b><span
+lang=EN-US style='font-size:14.0pt'>T</span></b><b><span style='font-size:14.0pt'>[</span></b><b><span
+lang=EN-US style='font-size:14.0pt'>B</span></b><b><span style='font-size:14.0pt'>]</span></b><span
+style='font-size:14.0pt'> входит в построенные для них множество образов.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;border:none;
+padding:0cm'><b><span lang=EN-US style='font-size:14.0pt'>Q = R[A : B] T = {r |
+r </span></b><b><span lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> R [A<sup>1</sup> ] </span></b><b><span
+lang=EN-US style='font-size:14.0pt;font-family:Symbol'>&Ugrave;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> T[B] </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Iacute;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> {y | y </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> R [A] </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Ugrave;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> (r, y) </span></b><b><span lang=EN-US
+style='font-size:14.0pt;font-family:Symbol'>&Icirc;</span></b><b><span
+lang=EN-US style='font-size:14.0pt'> R}}</span></b></p>
+
+</div>
+
+<p class=MsoBodyText2>Пример.</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=432 colspan=3 valign=top style='width:324.35pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>R<sub>1</sub></span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Фамилия</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Оценка</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Мильчаков</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Мильчаков</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>5</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Стоянова</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Стоянова</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Лузин</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>4</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Гулина</span></p>
+  </td>
+  <td width=208 valign=top style='width:155.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Математика</span></p>
+  </td>
+  <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>3</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:76.3pt;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=435 colspan=2 valign=top style='width:326.0pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><b><span lang=EN-US
+  style='font-size:14.0pt'>&nbsp;</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=219 valign=top style='width:164.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Преподаватель</span></p>
+  </td>
+  <td width=216 valign=top style='width:161.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Дисциплина</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=219 valign=top style='width:164.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h5><span lang=EN-US>Серков</span></h5>
+  </td>
+  <td width=216 valign=top style='width:161.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Информатика</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=219 valign=top style='width:164.05pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Исрапилов</span></p>
+  </td>
+  <td width=216 valign=top style='width:161.95pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>Математика</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US
+style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'> = </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><sub><span style='font-size:14.0pt'>1</span></sub><span
+style='font-size:14.0pt'> [Дисциплина : Дисциплина] </span><span lang=EN-US
+style='font-size:14.0pt'>R</span><sub><span style='font-size:14.0pt'>2</span></sub><span
+style='font-size:14.0pt'> </span><span lang=EN-US style='font-size:14.0pt'>R</span><sub><span
+style='font-size:14.0pt'>1 </span></sub><span style='font-size:14.0pt'>[Фамилия]</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span lang=EN-US
+  style='font-size:14.0pt'>R</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Фамилия</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Мильчаков</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Стоянова</span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Порядок выполнения работы</span></b></p>
+
+<p class=MsoBodyText2>          1.&nbsp;По индивидуальному заданию постройте базы
+данных в виде двух файлов (данные определите произвольным образом не менее 7
+записей).</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          2.&nbsp;</span><span
+lang=EN-US style='font-size:14.0pt'>C</span><span style='font-size:14.0pt'>оставьте
+программу решения задачи индивидуального задания на любом языке
+программирования.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          3.&nbsp;Укажите
+в программе, какие группы операторов выполняют операции реляционной алгебры.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          4.&nbsp;В
+отчете приведите описание алгоритма программы, содержимое базы данных, текст
+программы и результаты выполнения задания.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>Вариант задания 1.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          База
+данных банка представлена двумя отношениями:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Счет, Сумма, Операция, Остаток)       </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Фамилия,
+Счет).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата операции в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Счет
+– номер счета вкладчиков.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Сумма
+– сумма вклада до операции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Операция
+– сумма денег, положенных на счет (положительная), или снятых со счета
+(отрицательная).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Остаток
+– остаток вклада после выполнения операции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет остаток
+денежных средств у клиента с заданной фамилией на определенную дату.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'> Вариант задания 2.</span></p>
+
+<p class=MsoBodyText2>          База данных предприятия представлена двумя
+отношениями:</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Клиент, Продукция, Объем , Стоимость)     </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Клиент,
+Город),</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата поставки продукции в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Клиент
+– название фирмы получателя продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Продукция
+– название поставляемой продукции (щебень, песок, отсев, цемент).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Объем
+– объем поставок в тоннах.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Стоимость
+– стоимость поставленной продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет сумму
+денежных средств, полученных от клиента с заданным названием фирмы на
+определенную дату.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoTitle><span style='font-size:14.0pt'>Вариант задания 3</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          База
+данных предприятия представлена двумя отношениями:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Поставщик, Продукция, Объем , Цена, Стоимость)        </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Поставщик,
+Страна),</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата поставки продукции в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Поставщик–
+название фирмы поставщика.</span></p>
+
+<p class=MsoBodyText2>          Объем – объем поставок в тоннах.</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Цена
+– цена тонны продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Стоимость
+– стоимость поставленной продукции.</span></p>
+
+<p class=MsoBodyText2>          Продукция – название поставляемой продукции
+(бананы, ананасы, авокадо, апельсины).         </p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет сумму
+денежных средств, полученных от клиентов с заданным названием страны на
+определенную дату.</span></p>
+
+<p class=MsoBodyText2>&nbsp;</p>
+
+<p class=MsoTitle><span style='font-size:14.0pt'>Вариант задания 4</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          База
+данных междугородней телефонной компании двумя отношениями:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Телефон, Город, Время , Стоимость)  </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Фамилия,
+Телефон),</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата междугороднего разговора в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Поставщик–
+название фирмы поставщика.</span></p>
+
+<p class=MsoBodyText2>          Телефон – номер телефона.</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Город
+– город, в который звонил клиент.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Время
+– время переговоров.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Стоимость
+– стоимость разговора.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет
+стоимость переговоров клиента с заданной фамилией на определенную дату.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>Вариант задания 5.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          База
+данных банка представлена двумя отношениями:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Счет, Сумма, Операция, Остаток)       </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Фамилия,
+Счет).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата операции в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Счет
+– номер счета вкладчиков.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Сумма
+– сумма вклада до операции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Операция
+– сумма денег, положенных на счет (положительная), или снятых со счета
+(отрицательная).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Остаток
+– остаток вклада после выполнения операции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет фамилии
+вкладчиков, имеющих положительный остаток на определенную дату.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'> Вариант задания 6.</span></p>
+
+<p class=MsoBodyText2>          База данных предприятия представлена двумя
+отношениями:</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Клиент, Продукция, Объем , Стоимость)     </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Клиент,
+Город),</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата поставки продукции в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Клиент
+– название фирмы получателя продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Продукция
+– название поставляемой продукции (щебень, песок, отсев, цемент).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Объем
+– объем поставок в тоннах.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Стоимость
+– стоимость поставленной продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет список
+фирм и городов, осуществляющих поставки заданного вида продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoTitle><span style='font-size:14.0pt'>Вариант задания 7</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          База
+данных предприятия представлена двумя отношениями:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Поставщик, Продукция, Объем , Цена, Стоимость)        </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Поставщик,
+Страна),</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата поставки продукции в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Поставщик–
+название фирмы поставщика.</span></p>
+
+<p class=MsoBodyText2>          Объем – объем поставок в тоннах.</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Цена
+– цена тонны продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Стоимость
+– стоимость поставленной продукции.</span></p>
+
+<p class=MsoBodyText2>          Продукция – название поставляемой продукции
+(бананы, ананасы, авокадо, апельсины).         </p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет список
+фирм и городов, осуществляющих поставки заданного вида продукции.</span></p>
+
+<p class=MsoBodyText2>&nbsp;</p>
+
+<p class=MsoTitle><span style='font-size:14.0pt'>Вариант задания 8</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          База
+данных междугородней телефонной компании двумя отношениями:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Телефон, Город, Время , Стоимость)  </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Фамилия,
+Телефон),</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата междугороднего разговора в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Поставщик–
+название фирмы поставщика.</span></p>
+
+<p class=MsoBodyText2>          Телефон – номер телефона.</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Город
+– город, в который звонил клиент.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Время
+– время переговоров.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Стоимость
+– стоимость разговора.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет фамилии
+клиентов, производивших телефонные звонки в город с заданным названием.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'>Вариант задания 9.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          База
+данных банка представлена двумя отношениями:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Счет, Сумма, Операция, Остаток)       </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Фамилия,
+Счет).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата операции в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Счет
+– номер счета вкладчиков.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Сумма
+– сумма вклада до операции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Операция
+– сумма денег, положенных на счет (положительная), или снятых со счета
+(отрицательная).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Остаток
+– остаток вклада после выполнения операции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, определяет по
+заданной дате сумму денег положенных в банк клиентами.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'> Вариант задания 10.</span></p>
+
+<p class=MsoBodyText2>          База данных предприятия представлена двумя
+отношениями:</p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>1(Дата,
+Клиент, Продукция, Объем , Стоимость)     </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          </span><span
+lang=EN-US style='font-size:14.0pt'>R</span><span style='font-size:14.0pt'>2(Клиент,
+Город),</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Дата
+– дата поставки продукции в формате ##.##.##.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Клиент
+– название фирмы получателя продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Продукция
+– название поставляемой продукции (щебень, песок, отсев, цемент).</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Объем
+– объем поставок в тоннах.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Стоимость
+– стоимость поставленной продукции.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>          Составить
+программу, которая, используя операции реляционной алгебры, по заданной дате определяет
+объем перевозок (в тоннах) из определенного города.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>
