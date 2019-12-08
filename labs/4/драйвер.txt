@@ -1,0 +1,42 @@
+3) SELECT cd.id, cd.series_id, cd.name, cd.price
+FROM firms INNER JOIN (series INNER JOIN cd ON series.id = cd.series_id) ON firms.id = series.firm_id
+ORDER BY firms.name, cd.name;
+
+4) SELECT DISTINCT firms.name
+FROM firms INNER JOIN (series INNER JOIN cd ON series.id = cd.series_id) ON firms.id = series.firm_id;
+
+5) SELECT performers.id, performers.name
+FROM performers INNER JOIN albums ON performers.id = albums.performer_id
+WHERE albums.name = 'Фигаро'
+ORDER BY performers.name;
+
+6) SELECT DISTINCT performers.id, performers.name
+FROM performers INNER JOIN albums ON performers.id = albums.performer_id
+WHERE albums.name = any 
+(Select albums.name from albums 
+where albums.name in ('Фигаро', 'Риголетто', 'Альфио', 'Скар-пиа', 'Дон Жуан'));
+
+7) SELECT *
+FROM tracks
+WHERE tracks.name like '*amore*'
+and tracks.name like '*core*'
+and tracks.duration > '00:05:00'; - ХЗ, ВЕРНО ЛИ
+
+8) SELECT albums.name, tracks.id, tracks.name
+FROM cd, albums INNER JOIN tracks ON albums.id = tracks.album_id;
+
+9) SELECT first.performer_id, second.performer_id
+FROM albums AS [first], albums AS [second]
+WHERE first.id = second.id and first.performer_id > second.performer_id;
+
+11)SELECT cd.name, count(track_id)
+FROM cd INNER JOIN tracks_on_cd ON cd.id = tracks_on_cd.cd_id
+GROUP BY cd.name;
+
+15) INSERT INTO albums
+VALUES ('12', '14', 'something');
+
+16) DELETE *
+FROM albums
+WHERE albums.id = 12;
+
