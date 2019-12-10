@@ -25,9 +25,14 @@ and tracks.duration > '00:05:00'; - ХЗ, ВЕРНО ЛИ
 8) SELECT albums.name, tracks.id, tracks.name
 FROM cd, albums INNER JOIN tracks ON albums.id = tracks.album_id;
 
-9) SELECT first.performer_id, second.performer_id
+9)
+SELECT distinct first.performer_id, second.performer_id
+FROM albums AS [first] inner join albums AS [second] on first.name = second.name
+
+10)
+SELECT distinct first.performer_id, second.performer_id
 FROM albums AS [first], albums AS [second]
-WHERE first.id = second.id and first.performer_id > second.performer_id;
+WHERE first.name = second.name and first.performer_id > second.performer_id;
 
 11)SELECT cd.name, count(track_id)
 FROM cd INNER JOIN tracks_on_cd ON cd.id = tracks_on_cd.cd_id
@@ -74,10 +79,31 @@ WHERE artist_id IN (
 )
 GROUP BY artists.name, role
 
-15) INSERT INTO albums
-VALUES ('12', '14', 'something');
+15) 
+INSERT INTO albums ( performer_id, name )
+VALUES (PERF_ID, "Песни о любви");
 
-16) DELETE *
+INSERT INTO tracks ( album_id, name, duration )
+VALUES (ALB_ID, 'Ах! Какая женщина!', 2);
+
+
+16)
+DELETE *
+FROM roles
+WHERE roles.track_id =
+(select tracks.id from tracks
+where tracks.album_id = ALB_ID);
+
+DELETE *
+FROM tracks_on_cd
+WHERE tracks_on_cd.track_id =
+(select tracks.id from tracks
+where tracks.album_id = ALB_ID);
+
+DELETE *
+FROM tracks
+WHERE tracks.album_id = ALB_ID;
+
+DELETE *
 FROM albums
-WHERE albums.id = 12;
-
+WHERE albums.id = ALB_ID;
