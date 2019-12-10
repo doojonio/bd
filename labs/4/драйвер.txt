@@ -33,6 +33,18 @@ WHERE first.id = second.id and first.performer_id > second.performer_id;
 FROM cd INNER JOIN tracks_on_cd ON cd.id = tracks_on_cd.cd_id
 GROUP BY cd.name;
 
+12)
+SELECT TOP 1 main_perf.name FROM
+          performers main_perf,
+          (SELECT performers.id as id, COUNT(*) AS cd_num FROM
+                        (SELECT DISTINCT toc.cd_id AS CDID, performers.id FROM
+                        ((performers INNER JOIN albums ON albums.performer_id = performers.id)
+                        INNER JOIN tracks ON tracks.album_id = albums.id)
+                        INNER JOIN tracks_on_cd AS toc ON toc.track_id = tracks.id)
+          GROUP BY performers.id)
+WHERE main_perf.id = id
+ORDER BY cd_num DESC
+
 15) INSERT INTO albums
 VALUES ('12', '14', 'something');
 
